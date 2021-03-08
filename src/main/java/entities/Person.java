@@ -27,7 +27,7 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
     private String phone;
-    @ManyToOne(cascade = { CascadeType.PERSIST })
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Address address;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -47,7 +47,17 @@ public class Person implements Serializable {
     
     public Person() {
     }
-        
+
+    // add address and set bi-directional reference in address to point back
+    public void setAddress(Address address) {
+        if (address != null){
+            this.address = address;
+            this.address.addPerson(this);
+        }
+    }
+    
+    /* Getters and setters */
+    
     public Long getId() {
         return id;
     }
@@ -96,9 +106,4 @@ public class Person implements Serializable {
         return address;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-        this.address.addPerson(this);
-    }
-      
 }

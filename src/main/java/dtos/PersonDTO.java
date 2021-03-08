@@ -70,6 +70,10 @@ public class PersonDTO {
         this.lName = lName;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getPhone() {
         return phone;
     }

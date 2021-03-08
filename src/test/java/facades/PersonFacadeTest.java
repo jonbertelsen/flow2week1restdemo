@@ -1,5 +1,6 @@
 package facades;
 
+import dtos.PersonDTO;
 import entities.Person;
 import utils.EMF_Creator;
 import java.util.List;
@@ -76,13 +77,13 @@ public class PersonFacadeTest {
 
     @Test
     public void testGetPerson() throws Exception {
-        Person person = facade.getPerson(p1.getId());
-        assertEquals("Jønke", person.getFirstName(), "Expects to find Jønke");
+        PersonDTO person = facade.getPerson(p1.getId());
+        assertEquals("Jønke", person.getfName(), "Expects to find Jønke");
     }
 
     @Test
     public void testAddPerson() throws Exception {
-        Person p;
+        PersonDTO p;
         
         // Method one: testing for a known exception
         try {
@@ -93,7 +94,7 @@ public class PersonFacadeTest {
         
         // Method two: testing for a known exception with assertion
         Assertions.assertThrows(Exception.class, () -> {
-            final Person person = facade.addPerson("", "Petersen", "131212","","","");
+            final PersonDTO person = facade.addPerson("", "Petersen", "131212","","","");
         });
         
         p = facade.addPerson("Jon", "Snow", "2112211","Bygaden 28","2100","Kbh Ø");
@@ -136,8 +137,8 @@ public class PersonFacadeTest {
     @Test
     public void testEditPerson() throws Exception {
         p3.setLastName("Hansen");
-        Person p1New = facade.editPerson(p3);
-        assertEquals(p1New.getLastName(), p3.getLastName());
+        PersonDTO p1New = facade.editPerson(new PersonDTO(p3));
+        assertEquals(p1New.getlName(), p3.getLastName());
         assertNotEquals(p3.getLastName(),"Jensen");
     }
     

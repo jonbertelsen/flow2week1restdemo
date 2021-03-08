@@ -5,18 +5,19 @@
  */
 package facades;
 
-import entities.Person;
-import java.util.List;
+import dtos.PersonDTO;
+import dtos.PersonsDTO;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
  * @author jobe
  */
 public interface IPersonFacade {
-  public Person addPerson(String fName, String lName, String phone, String street, String zip, String city) throws Exception;  
-  public Person deletePerson(long id) throws Exception;
-  public Person getPerson(long id) throws Exception; 
-  public List<Person> getAllPersons();  
-  public Person editPerson(Person p) throws Exception;  
+  public PersonDTO addPerson(String fName, String lName, String phone, String street, String zip, String city) throws WebApplicationException;  
+  public PersonDTO deletePerson(long id) throws WebApplicationException;
+  public PersonDTO getPerson(long id) throws WebApplicationException; 
+  public PersonsDTO getAllPersons();  
+  public PersonDTO editPerson(PersonDTO p) throws WebApplicationException;  
 }
 
