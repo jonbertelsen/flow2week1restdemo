@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 //@Disabled
 public class PersonFacadeTest {
     
-        private static Person p1, p2, p3;
+    private static Person p1, p2, p3;
 
     private static EntityManagerFactory emf;
     private static PersonFacade facade;

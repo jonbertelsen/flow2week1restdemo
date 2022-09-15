@@ -48,6 +48,7 @@ public class PersonResource {
     
     @PUT
     @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
     public String updatePerson(@PathParam("id") long id,  String person) throws Exception, Exception {
         PersonDTO pDTO = GSON.fromJson(person, PersonDTO.class);
         pDTO.setId(id);
